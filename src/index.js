@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-// import './style/app.css';
-// import './style/bootstrap.min.css';
-// import 'antd/dist/antd.css';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import 'material-design-icons';
-import 'react-mdl/extra/css/material.blue-deep_orange.min.css';
-import 'react-mdl/extra/material-grid.min.css';
+import './style/app.css';
+import 'react-mdl/extra/css/material.blue-indigo.min.css';
 import 'react-mdl/extra/material.min.js';
-// \node_modules\material-design-lite\dist\material.deep_orange-green.min.css
+import App from './App';
+import Home from './components/Home';
+import Login from './components/Login';
 
 ReactDOM.render(
-
-  <App />,
+<Router history={browserHistory}>
+  <Route path="/" component={App}>
+    <IndexRoute component={Home}/>
+      <Route path="/login" component={Login}/>
+  
+  </Route>
+</Router>,
   document.getElementById('root')
 );

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Layout, Header, Navigation, Drawer, Content, Cell} from 'react-mdl';
-// import SideBar from './components/sidebar';
+import { Layout, Header, Navigation, Content, FABButton, Icon,Textfield} from 'react-mdl';
+import {Link} from 'react-router';
+import SideBar from './components/Sidebar';
+import Settings from './components/Settings';
 // import Search from './components/search';
 
 
@@ -10,25 +12,18 @@ export default class App extends Component {
     return (
 <div>
     <Layout fixedHeader>
-        <Header title={<span><span style={{ color: '#ddd' }}>Area / </span><strong>The Title</strong></span>}>
+        <Header title={<span><strong>Nuflow</strong></span>}>
             <Navigation>
-                <a href="">Link</a>
-                <a href="">Link</a>
-                <a href="">Link</a>
-                <a href="">Link</a>
+                <Link to="/login">login</Link>
             </Navigation>
+            <Settings/>
         </Header>
-        <Cell hideDesktop={true}>
-        <Drawer title="Title" >
-            <Navigation>
-                <a href="">Link</a>
-                <a href="">Link</a>
-                <a href="">Link</a>
-                <a href="">Link</a>
-            </Navigation>
-        </Drawer>
-        </Cell>
-        <Content />
+        <SideBar/>
+        
+        
+        <Content>
+                {this.props.children}
+        </Content>
     </Layout>
 </div>
     );
