@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
-import 'material-design-icons';
+import 'material-design-icons/iconfont/material-icons.css';
 import './style/app.css';
 import 'react-mdl/extra/css/material.blue-indigo.min.css';
 import 'react-mdl/extra/material.min.js';

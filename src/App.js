@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Header, Navigation, Content, FABButton, Icon,Textfield} from 'react-mdl';
+import { Layout, Header, Navigation, Content} from 'react-mdl';
 import {Link} from 'react-router';
 import SideBar from './components/Sidebar';
 import Settings from './components/Settings';
