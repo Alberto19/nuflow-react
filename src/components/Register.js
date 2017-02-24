@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 // import {Card, CardTitle, CardText, CardActions, CardMenu, IconButton, Button} from 'react-mdl';
-import {Grid, Cell, Textfield, Button, FABButton} from 'react-mdl';
-import {Link} from 'react-router';
+import {Grid, Cell, Textfield, Button} from 'react-mdl';
+import axios from 'axios';
 
 // import face from '../style/'
-export default class Login extends Component{
+export default class Register extends Component{
 
     constructor(props){
         super(props);
@@ -12,15 +12,27 @@ export default class Login extends Component{
             email: '',
             password: ''
         };
-        this.login = this.login.bind(this);
+        this.RegisterUser = this.RegisterUser.bind(this);
     }
 
     inputChange(nome, e){
         this.setState({[nome]: e.target.value});
     }
 
-    login(e){
+    RegisterUser(e){
         e.preventDefault();
+        // axios.defaults.baseURL = '';
+        var user = {
+            username: this.state.email,
+            password: this.state.password
+        };
+        var valor = JSON.stringify(user);
+    
+        axios.post('http://localhost:3001/api/signup',valor).then((result)=>{
+            localStorage.setItem('token',result.data.token);
+        }).catch(()=>{
+            alert('Erro ao cadastrar usuario');
+        });
     }
 
 	render(){
@@ -28,7 +40,7 @@ export default class Login extends Component{
             <Grid className="section--center">
                 <Cell  offsetDesktop={3} col={6} offsetTablet={1} tablet={6} phone={5} >
                     <div className="mdl-shadow--2dp formLogin ">
-                        <form  onSubmit={this.enviaForm} method="post" style={{paddingTop:"30px"}}>
+                        <form  onSubmit={this.RegisterUser} method="post" style={{paddingTop:"30px"}}>
                             <Grid >
                                 <Cell offsetDesktop={3} col={6}  offsetTablet={1} tablet={7} phone={6}>
                                 <Textfield type="email"
@@ -48,11 +60,7 @@ export default class Login extends Component{
                             </Grid>
                             <Grid>
                                 <Cell offsetDesktop={4} col={7}   offsetTablet={3} tablet={7} offsetPhone={1} phone={5}>
-                                    <Button raised colored onClick={this.login} type="submit">entrar</Button>
-                                   <FABButton onClick={this.login} >
-                                        
-                                    </FABButton>
-                                    <Link to="/register">Register</Link>
+                                    <Button raised colored  type="submit">Cadastrar</Button>
                                 </Cell>
                             </Grid>
                         </form>
