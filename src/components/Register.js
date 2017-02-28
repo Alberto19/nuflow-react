@@ -23,13 +23,13 @@ export default class Register extends Component{
         e.preventDefault();
         // axios.defaults.baseURL = '';
         var user = {
-            username: this.state.email,
+            login: this.state.email,
             password: this.state.password
         };
-        var valor = JSON.stringify(user);
     
-        axios.post('http://localhost:3001/api/signup',valor).then((result)=>{
+        axios.post('http://localhost:3001/user/singUp',user).then((result)=>{
             localStorage.setItem('token',result.data.token);
+            alert(result.data.token);
         }).catch(()=>{
             alert('Erro ao cadastrar usuario');
         });

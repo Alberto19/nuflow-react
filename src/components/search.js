@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-
-import {Input} from 'antd';
+import { Textfield} from 'react-mdl';
 
 export default class Search extends Component {
 
     render() {
         return (
             <div>
-                <Input placeholder="Please enter..."/>
+                <Textfield
+                    onChange={() => {}}
+                    label="Expandable Input"
+                    expandable
+                    expandableIcon="search"
+                />
             </div>
         );
     }
