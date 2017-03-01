@@ -9,6 +9,7 @@ import App from './App';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+import Feed from './components/Feed';
 
 ReactDOM.render(
 <Router history={browserHistory}>
@@ -16,6 +17,8 @@ ReactDOM.render(
     <IndexRoute component={Home}/>
       <Route path="/login" component={Login}/>
       <Route path="/register" component={Register}/>
+      <Route path="/Feed" component={Feed}/>
+
   
   </Route>
 </Router>,

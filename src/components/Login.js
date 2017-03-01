@@ -28,9 +28,10 @@ export default class Login extends Component{
         };
         service.post('/user/singIn', user).then((result)=>{
             localStorage.setItem('token',result.data.token);
+            this.context.router.push('/Feed');
            
         }).catch((err)=>{
-              alert('Erro ao cadastrar usuario');
+              alert(err);
         });
     }
 
@@ -72,4 +73,9 @@ export default class Login extends Component{
             </Grid>
 		);
 	}
+
+
 }
+    Login.contextTypes ={
+        router: React.PropTypes.object.isRequired
+    }
