@@ -12,6 +12,7 @@ export default class Search extends Component {
                     expandable
                     expandableIcon="search"
                 />
+                
             </div>
         );
     }

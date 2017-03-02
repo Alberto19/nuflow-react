@@ -10,6 +10,7 @@ export default class SideBar extends Component{
                 <Link to="">legal</Link>
                 <Link to="">tem</Link>
             </Navigation>
+            
         </Drawer>
         );
     }
