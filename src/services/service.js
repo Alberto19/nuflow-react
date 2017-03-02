@@ -7,7 +7,7 @@ class Service {
 		this.get = this.get.bind(this);
 		this.put = this.put.bind(this);
 		this.delete = this.delete.bind(this);
-		axios.defaults.baseURL = 'http://192.168.0.100:3001';
+		axios.defaults.baseURL = 'https://nuflow.herokuapp.com';
 
 		if (this.token !== undefined || this.token !== '') {
 			axios.defaults.headers.post['x-access-token'] = this.token;

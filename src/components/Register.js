@@ -27,9 +27,9 @@ export default class Register extends Component{
             password: this.state.password
         };
     
-        axios.post('http://localhost:3001/user/singUp',user).then((result)=>{
+        axios.post('https://nuflow.herokuapp.com/user/singUp',user).then((result)=>{
             localStorage.setItem('token',result.data.token);
-            alert(result.data.token);
+            this.context.router.push('/Feed');
         }).catch(()=>{
             alert('Erro ao cadastrar usuario');
         });
@@ -70,3 +70,7 @@ export default class Register extends Component{
 		);
 	}
 }
+
+Register.contextTypes ={
+        router: React.PropTypes.object.isRequired
+    }
