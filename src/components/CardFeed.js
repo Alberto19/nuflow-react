@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Grid, Cell, IconButton} from 'react-mdl';
+import {Grid, Cell, IconButton, Tooltip, Icon} from 'react-mdl';
 
 export default class CardFeed extends Component{
 
 
 	Maps(url, e){
 		e.preventDefault();
-		console.log(url);
+		window.open(url,'_blank');
 	}
 
 	render(){
@@ -23,10 +23,13 @@ export default class CardFeed extends Component{
 					<Grid style={{padding: '0px', height: '200px'}}>
 						<Cell col={10}  tablet={5} phone={3}>
 						<p style={{fontSize:'23px', fontWeight:'600',  color:'rgb(33,150,243)', textAlign: 'center' }}>{place.name}</p>
-						Telefone:{place.phone}
-						GoogleMaps:{place.mapsUrl}
 						<p>Rating:{place.rating}</p>
-						<IconButton name="place" onClick={this.Maps.bind(this,place.mapsUrl)}  />
+						<div>
+							<Tooltip label={place.phone} position="right">
+								<Icon name="phone" />
+							</Tooltip>
+							<IconButton name="place" onClick={this.Maps.bind(this,place.mapsUrl)}  />
+						</div>
 						</Cell>
 					<Cell col={2}  tablet={3} phone={1}>
 						<IconButton name="share" />
