@@ -26,7 +26,7 @@ export default class Feed extends Component{
 						keyword: this.keyword
 					}
 	
-					axios.post('https://nuflow.herokuapp.com/search/places', find).then((result)=>{
+					axios.post('/search/places', find).then((result)=>{
 					// axios.post('http://localhost:3001/search/places', find).then((result)=>{
 						this.setState({lista: result.data});
 							console.log(result.data);

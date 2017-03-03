@@ -27,7 +27,7 @@ export default class Register extends Component{
             password: this.state.password
         };
     
-        axios.post('https://nuflow.herokuapp.com/user/singUp',user).then((result)=>{
+        axios.post('/user/singUp',user).then((result)=>{
             localStorage.setItem('token',result.data.token);
             this.context.router.push('/Feed');
         }).catch(()=>{

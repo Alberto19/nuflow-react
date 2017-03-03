@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-// import {Card, CardTitle, CardText, CardActions, CardMenu, IconButton, Button} from 'react-mdl';
 import {Grid, Cell, Textfield, Button, FABButton} from 'react-mdl';
 import {Link} from 'react-router';
-// import service from '../services/service';
+import PubSub from 'pubsub-js';
 import axios from 'axios';
 
 export default class Login extends Component{
@@ -27,8 +26,9 @@ export default class Login extends Component{
             login: this.state.email,
             password: this.state.password
         };
-        axios.post('https://nuflow.herokuapp.com/user/singIn', user).then((result)=>{
+        axios.post('/user/singIn', user).then((result)=>{
             localStorage.setItem('token',result.data.token);
+            PubSub.publish('login');
             this.context.router.push('/Feed');
            
         }).catch((err)=>{
