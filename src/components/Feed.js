@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import service from '../services/service';
+// import service from '../services/service';
+import axios from 'axios';
 import {Grid, Cell, IconButton} from 'react-mdl';
 
 
@@ -9,20 +10,34 @@ export default class Feed extends Component{
 		this.state ={
 			lista: []
 		};
-	}
+		this.location = [];
+		this.keyword = '';
+		this.radius = 900;
 
-	componentWillMount(){
-		let busca ={
-			location:{
-				lat: -23.5870195,
-				lon: -46.9518531,
-			},
-			radius: 15000,
-			keyword: 'balada'
-		}
-		service.post('/search/places',busca).then((result)=>{
-			this.setState({lista: result.data.response});
-		})
+	}
+	
+
+	componentDidMount(){
+		   if (navigator.geolocation) {
+        		navigator.geolocation.getCurrentPosition((position)=>{
+					this.location = [position.coords.latitude, position.coords.longitude];
+					this.radius/=6371;
+					let find={
+						location: this.location,
+						radius: this.radius,
+						keyword: this.keyword
+					}
+			
+					axios.post('https://nuflow.herokuapp.com/search/places', find).then((result)=>{
+							console.log(result.data);
+						}).catch((err)=>{
+							alert(err);
+						});
+				});
+    		} else { 
+        		alert("Geolocation is not supported by this browser.");
+    		}
+			
 	}
 
 	render(){
