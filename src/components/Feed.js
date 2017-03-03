@@ -11,7 +11,7 @@ export default class Feed extends Component{
 		};
 		this.location = [];
 		this.keyword = '';
-		this.radius = 1000;
+		this.radius = 200;
 
 	}
 	
@@ -25,8 +25,9 @@ export default class Feed extends Component{
 						radius: this.radius,
 						keyword: this.keyword
 					}
-			
+	
 					axios.post('https://nuflow.herokuapp.com/search/places', find).then((result)=>{
+					// axios.post('http://localhost:3001/search/places', find).then((result)=>{
 						this.setState({lista: result.data});
 							console.log(result.data);
 						}).catch((err)=>{

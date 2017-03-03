@@ -7,12 +7,27 @@ import Search from './components/Search';
 
 
 export default class App extends Component {
+
+    constructor(){
+         super();
+        this.state={
+            login: false
+        }
+    };
+    componentWillMount(){
+        if(localStorage.getItem('token') !== null){
+            this.setState({login:true});
+            this.context.router.push('/Feed');
+        }else{
+             this.context.router.push('/login');
+        }
+    }
  
  render() {
     return (
         <div>
             <Layout fixedHeader>
-                <Header title={<span><strong><Link to="/Feed">Nuflow</Link></strong></span>}>
+                <Header title={<span><strong>Nuflow</strong></span>}>
                     <Navigation>
                 <Search/>
                         <Link to="/login">login</Link>
@@ -30,3 +45,7 @@ export default class App extends Component {
     );
   }
 }
+
+    App.contextTypes ={
+        router: React.PropTypes.object.isRequired
+    }
