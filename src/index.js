@@ -17,9 +17,7 @@ ReactDOM.render(
     <IndexRoute component={Home}/>
       <Route path="/login" component={Login}/>
       <Route path="/register" component={Register}/>
-      <Route path="/Feed" component={Feed}/>
-
-  
+      <Route path="/Feed" component={Feed} handler={Feed}/>
   </Route>
 </Router>,
   document.getElementById('root')
