@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Grid, Cell, Textfield, Button, FABButton} from 'react-mdl';
+import {Grid, Cell, Textfield, Button} from 'react-mdl';
 import {Link} from 'react-router';
 import PubSub from 'pubsub-js';
 import axios from 'axios';
+import FacebookLogin from 'react-facebook-login';
 
 export default class Login extends Component{
 
@@ -13,11 +14,13 @@ export default class Login extends Component{
             password: ''
         };
         this.login = this.login.bind(this);
+        this.facebook = this.facebook.bind(this);
     }
 
     inputChange(nome, e){
         this.setState({[nome]: e.target.value});
     }
+
 
     login(e){
         e.preventDefault();
@@ -36,6 +39,12 @@ export default class Login extends Component{
         });
     }
 
+    facebook(response){
+        localStorage.setItem('token',response.accessToken);
+        PubSub.publish('login');
+        this.context.router.push('/Feed');
+        console.log(response);
+    }
 	render(){
 		return(
             <Grid className="section--center">
@@ -61,11 +70,19 @@ export default class Login extends Component{
                             </Grid>
                             <Grid>
                                 <Cell offsetDesktop={4} col={7}   offsetTablet={3} tablet={7} offsetPhone={1} phone={5}>
-                                    <Button raised colored type="submit">entrar</Button>
-                                   <FABButton onClick={this.login} >
-                                        
-                                    </FABButton>
-                                    <Link to="/register">Register</Link>
+                                    <Button raised colored type="submit">SingIn</Button>
+                                    <FacebookLogin
+                                        appId="780090875680638"
+                                        autoLoad={true}
+                                        fields="name,email,picture"
+                                        callback={this.facebook}
+                                        cssClass="my-facebook-button-class"
+                                        icon="fa-facebook-square"
+                                    />
+                                    <div>
+                                    <span>Ainda não é usuario?</span>
+                                    <Link to="/register">SingUp in Nuflow</Link>
+                                    </div>
                                 </Cell>
                             </Grid>
                         </form>

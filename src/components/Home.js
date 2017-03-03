@@ -6,7 +6,7 @@ export default class Home extends Component{
 		return(
 			<div>
 				<Layout>
-						<h1>Ola caminho de rotasd jhahjahahah</h1>
+						<h1 style={{textAlign: 'center'}}>Nuflow em Construção...</h1>
 				</Layout>
 			</div>
 		);

@@ -60,7 +60,7 @@ export default class Register extends Component{
                             </Grid>
                             <Grid>
                                 <Cell offsetDesktop={4} col={7}   offsetTablet={3} tablet={7} offsetPhone={1} phone={5}>
-                                    <Button raised colored  type="submit">Cadastrar</Button>
+                                    <Button raised colored  type="submit">SingUp</Button>
                                 </Cell>
                             </Grid>
                         </form>
