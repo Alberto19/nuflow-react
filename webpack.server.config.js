@@ -1,12 +1,13 @@
-var fs = require('fs')
-var path = require('path')
+var fs = require('fs');
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
 
   entry: path.resolve(__dirname, 'server.js'),
 
   output: {
-    filename: 'server.bundle.js'
+   filename: 'bundle.js',
   },
 
   target: 'node',
@@ -23,6 +24,12 @@ module.exports = {
     __filename: false,
     __dirname: false
   },
+
+  plugins: process.env.NODE_ENV === JSON.stringify('production') ? [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  ] : [],
 
   module: {
     loaders: [{

@@ -7,7 +7,6 @@ import Search from './components/Search';
 import PubSub from 'pubsub-js';
 import axios from 'axios';
 
-
 export default class App extends Component {
 
     constructor(){
@@ -17,19 +16,20 @@ export default class App extends Component {
         }
         this.loginUser = this.loginUser.bind(this);
 
+
     axios.defaults.baseURL = 'https://nuflow.herokuapp.com';
     // axios.defaults.baseURL = 'http://localhost:3001';
     };
 
-    componentWillMount(){
-        if(localStorage.getItem('token') !== null){
-            this.setState({login:true});
-            this.context.router.push('/Feed');
-        }else{
-            this.setState({login:false});
-             this.context.router.push('/');
-        }
-    }
+    // componentWillMount(){
+    //     if(this.localStorage !== null){
+    //         this.setState({login:true});
+    //         this.context.router.push('/Feed');
+    //     }else{
+    //         this.setState({login:false});
+    //          this.context.router.push('/');
+    //     }
+    // }
     loginUser(){
 
         PubSub.subscribe('login', (tipoco)=>{
