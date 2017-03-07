@@ -17,8 +17,8 @@ export default class App extends Component {
         }
         this.loginUser = this.loginUser.bind(this);
 
-    axios.defaults.baseURL = 'https://nuflow.herokuapp.com';
-    // axios.defaults.baseURL = 'http://localhost:3001';
+    // axios.defaults.baseURL = 'https://nuflow.herokuapp.com';
+    axios.defaults.baseURL = 'http://localhost:3001';
     };
 
     componentWillMount(){
