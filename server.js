@@ -38,11 +38,15 @@ function renderPage(appHtml) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="style/app.css">
+  <link rel="stylesheet" type="text/css" href="style/material-icons.css">
+    <link rel="stylesheet" type="text/css" href="style/material.blue-indigo.min.css">
   <title>Nuflow</title>
 </head>
 <body>
     <div id=root>${appHtml}</div>
 </body>
+<script src="/style/material.min.js"></script>
 <script src="/bundle.js"></script>
 </html>
    `

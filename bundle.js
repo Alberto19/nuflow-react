@@ -97,7 +97,7 @@
 	});
 
 	function renderPage(appHtml) {
-	  return '\n<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <link rel="shortcut icon" href="favicon.ico">\n  <link rel="stylesheet" type="text/css"  href="style/app.css">\n  <link rel="stylesheet" type="text/css"  href="style/material-icons.css">\n  <title>Nuflow</title>\n</head>\n<body>\n    <div id=root>' + appHtml + '</div>\n</body>\n<script src="/bundle.js"></script>\n</html>\n   ';
+	  return '\n<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <link rel="shortcut icon" href="favicon.ico">\n  <link rel="stylesheet" type="text/css" href="style/app.css">\n  <link rel="stylesheet" type="text/css" href="style/material-icons.css">\n    <link rel="stylesheet" type="text/css" href="style/material.blue-indigo.min.css">\n  <title>Nuflow</title>\n</head>\n<body>\n    <div id=root>' + appHtml + '</div>\n</body>\n<script src="/style/material.min.js"></script>\n<script src="/bundle.js"></script>\n</html>\n   ';
 	}
 
 	var PORT = process.env.PORT || 8080;
