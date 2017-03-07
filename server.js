@@ -32,13 +32,19 @@ app.get('*', (req, res) => {
 
 function renderPage(appHtml) {
   return `
-    <!doctype html public="storage">
-    <html>
-    <meta charset=utf-8/>
-    <title>My First React Router App</title>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.ico">
+  <title>Nuflow</title>
+</head>
+<body>
     <div id=root>${appHtml}</div>
-    <html>
-    <script src="/bundle.js"></script>
+</body>
+<script src="/bundle.js"></script>
+</html>
    `
 }
 
